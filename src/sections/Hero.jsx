@@ -1,26 +1,47 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react';
 import heroImage from "/img/HeroBackground.png";
-import Navbar from '../components/Navbar';
 
 const Hero = () => {
+  const [blur, setBlur] = useState(0);
+  const [parallax, setParallax] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      const maxBlur = 16; 
+      const scrollRange = 400; 
+      const blurValue = Math.min((scrollY / scrollRange) * maxBlur, maxBlur);
+      setBlur(blurValue);
+
+      setParallax(scrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <section id='home' className="relative w-full h-screen overflow-hidden flex flex-col justify-between">
-        {/* Background image */}
-        <img 
-        src={heroImage} 
-        alt="Hero image" 
-        className="absolute inset-0 w-full h-full object-cover z-0"/>
+      <img
+        src={heroImage}
+        alt="Hero image"
+        className="absolute inset-0 w-full h-full object-cover z-0 scale-110"
+        style={{
+          filter: `blur(${blur}px)`,
+          transform: `translateY(${parallax}px) scale(1.1)`,
+          willChange: 'transform, filter'
+        }}
+      />
 
         {/* Overlay */}
         <div className="absolute inset-0 bg-black/30 z-10"></div>
 
-
         {/* Content */}
-        <div className="relative z-20 h-full flex flex-col flex-start px-18 py-48 text-white max-w-4xl ">
+        <div className="relative z-20 h-full flex flex-col justify-center md:flex-start mx-8 md:mx-0 md:mt-0 md:px-18 md:py-48 text-[#F5F5F5] text-shadow-lg max-w-4xl">
             <h1 className="text-5xl md:text-6xl font-[times] mb-4">
             I am <span className="text-white/80">Lukas,</span>
             </h1>
-            <p className="text-lg md:text-l">
+            <p className="md:text-l text-l">
             New Media Development student at the Arteveldehogeschool in Ghent.
             </p>
             <p className="italic mt-2 text-sm md:text-l max-w-xl text-white/80">
