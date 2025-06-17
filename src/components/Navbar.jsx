@@ -22,7 +22,7 @@ const Navbar = () => {
   }, []);
 
   const handleNavClick = (id) => {
-    setIsMobileOpen(false); // sluit menu op mobiel na klik
+    setIsMobileOpen(false);
     const section = document.getElementById(id);
     if (section) {
       section.scrollIntoView({ behavior: "smooth" });
