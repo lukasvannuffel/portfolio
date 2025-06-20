@@ -1,4 +1,7 @@
 import React from 'react'
+import Project1 from './detail/Project1'
+import Project2 from './detail/Project2'
+import Project3 from './detail/Project3'
 
 const projects = [
   {
