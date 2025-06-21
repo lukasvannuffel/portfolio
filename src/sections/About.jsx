@@ -1,6 +1,24 @@
 import React from 'react'
 import profileImg from '/img/ProfilePicture.jpeg';
 
+const skills = [
+  { src: "/svg/html5.svg", label: "HTML 5" },
+  { src: "/svg/css3.svg", label: "CSS 3" },
+  { src: "/svg/javascript.svg", label: "JavaScript" },
+  { src: "/svg/react.svg", label: "React JS" },
+  { src: "/svg/php.svg", label: "PHP" },
+  { src: "/svg/mysql.svg", label: "MySQL", extra: "invert brightness-0" },
+  { src: "/svg/laravel.svg", label: "Laravel" },
+  { src: "/svg/craftcms.svg", label: "Craft CMS", size: "w-10 h-10" },
+  { src: "/svg/docker.svg", label: "Docker" },
+  { src: "/svg/photoshop.svg", label: "Photoshop" },
+  { src: "/svg/illustrator.svg", label: "Illustrator" },
+  { src: "/svg/indesign.svg", label: "Indesign" },
+  { src: "/svg/figma.svg", label: "Figma" },
+  { src: "/svg/blender.svg", label: "Blender" },
+  { src: "/svg/microsoft.svg", label: "Microsoft 365" },
+];
+
 const About = () => {
   return (
     <section id='about' className='relative w-full h-screen overflow-hidden flex flex-col bg-[#2A2621]'>
@@ -39,23 +57,26 @@ const About = () => {
         <h2 className="text-4xl md:text-6xl font-[times] -mb-2 md:mb-8 mt-8 md:mt-12 text-[#F5F5F5] z-20 text-center md:text-left ml-0 ">
           Skills
         </h2>
-      <div className="mt-4 grid grid-cols-3 sm:grid-cols-3 md:grid-cols-5 gap-y-2 justify-items-center">
-        <img src="/svg/html5.svg" alt="HTML5" className="w-8 h-8 md:w-12 md:h-12" />
-        <img src="/svg/css3.svg" alt="CSS3" className="w-8 h-8 md:w-12 md:h-12" />
-        <img src="/svg/javascript.svg" alt="JavaScript" className="w-8 h-8 md:w-12 md:h-12" />
-        <img src="/svg/react.svg" alt="React" className="w-8 h-8 md:w-12 md:h-12" />
-        <img src="/svg/php.svg" alt="PHP" className="w-8 h-8 md:w-12 md:h-12" />
-        <img src="/svg/mysql.svg" alt="MySQL" className="w-8 h-8 md:w-12 md:h-12 invert brightness-0" />
-        <img src="/svg/laravel.svg" alt="Laravel" className="w-8 h-8 md:w-12 md:h-12" />
-        <img src="/svg/craftcms.svg" alt="Craft CMS" className="w-10 h-10 md:w-12 md:h-12" />
-        <img src="/svg/docker.svg" alt="Docker" className="w-8 h-8 md:w-12 md:h-12" />
-        <img src="/svg/photoshop.svg" alt="Photoshop" className="w-8 h-8 md:w-12 md:h-12" />
-        <img src="/svg/illustrator.svg" alt="Adobe Illustrator" className="w-8 h-8 md:w-12 md:h-12" />
-        <img src="/svg/indesign.svg" alt="Adobe Indesign" className="w-8 h-8 md:w-12 md:h-12" />
-        <img src="/svg/figma.svg" alt="Figma" className="w-8 h-8 md:w-12 md:h-12" />
-        <img src="/svg/blender.svg" alt="Blender" className="w-8 h-8 md:w-12 md:h-12" />
-        <img src="/svg/microsoft.svg" alt="Microsoft 365" className="w-8 h-8 md:w-12 md:h-12" />
-      </div>
+
+
+        {/* Skills section */}
+        <div className="mt-4 grid grid-cols-3 sm:grid-cols-3 md:grid-cols-5 gap-x-4 gap-y-6 justify-items-center">
+          {skills.map((skill, idx) => (
+            <div
+              key={skill.label}
+              className="w-24 h-24 flex flex-col justify-center items-center group bg-white/10 backdrop-blur-md rounded-2xl shadow-lg transition-all duration-200 hover:scale-105 hover:bg-white/20"
+            >
+              <img
+                src={skill.src}
+                alt={skill.label}
+                className={`w-8 h-8 md:w-10 md:h-10 ${skill.size || ""} ${skill.extra || ""}`}
+              />
+              <span className="mt-2 text-xs text-[#F5F5F5] font-semibold opacity-80 group-hover:opacity-100 transition-opacity duration-100 text-center">
+                {skill.label}
+              </span>
+            </div>
+          ))}
+        </div>
 
       </div>
     </section>
