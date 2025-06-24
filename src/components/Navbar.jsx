@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import HamburgerIcon from '/svg/hamburger.svg';
+import { useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
   const [isVisible, setIsVisible] = useState(true);
   const [isHovered, setIsHovered] = useState(false);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     let lastScrollY = window.scrollY;
@@ -22,10 +24,20 @@ const Navbar = () => {
   }, []);
 
   const handleNavClick = (id) => {
-    setIsMobileOpen(false);
-    const section = document.getElementById(id);
-    if (section) {
-      section.scrollIntoView({ behavior: "smooth" });
+    if (window.location.pathname !== "/") {
+      navigate("/", { replace: false });
+      // Wait for navigation, then scroll
+      setTimeout(() => {
+        const section = document.getElementById(id);
+        if (section) {
+          section.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 100); // Adjust timeout if needed
+    } else {
+      const section = document.getElementById(id);
+      if (section) {
+        section.scrollIntoView({ behavior: "smooth" });
+      }
     }
   };
 

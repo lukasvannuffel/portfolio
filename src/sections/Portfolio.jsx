@@ -2,27 +2,35 @@ import React from 'react'
 import Project1 from './detail/Project1'
 import Project2 from './detail/Project2'
 import Project3 from './detail/Project3'
+import { Link } from 'react-router-dom';
 
 const projects = [
   {
     title: 'Project One',
     description: 'Description of project one.',
     image: 'path/to/image1.jpg',
-    link: 'https://example.com/project-one',
+    route: '/projects/1',
 
   },
   {
     title: 'Project Two',
     description: 'Description of project two.',
     image: 'path/to/image2.jpg',
-    link: 'https://example.com/project-two',
+    route: '/projects/2',
   },
   {
     title: 'Project Three',
     description: 'Description of project three.',
     image: 'path/to/image3.jpg',
-    link: 'https://example.com/project-three',
+    route: '/projects/3',
   },
+  {
+    title: 'Project Four',
+    description: 'Description of project four.',
+    image: 'path/to/image4.jpg',
+    route: '/projects/4',
+  },
+
 
 
 ];
@@ -36,7 +44,7 @@ const Portfolio = () => {
       </h1>
 
       {/* Projects Grid */}
-      <div className="flex flex-row justify-center grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+      <div className="flex flex-row justify-center items-center flex-wrap gap-4 md:gap-8 p-4 md:p-8 max-w-6xl mx-auto">
         {projects.map((project, index) => (
           <div
             key={index}
@@ -55,12 +63,12 @@ const Portfolio = () => {
                 </p>
               </div>
               <div className="mt-6">
-                <a
-                  href={project.link}
+                <Link
+                  to={project.route}
                   className="inline-block border border-black text-black py-2 px-6 rounded-full hover:bg-black hover:text-white transition duration-300"
                 >
                   View more
-                </a>
+                </Link>
               </div>
             </div>
           </div>

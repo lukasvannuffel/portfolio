@@ -21,7 +21,7 @@ const skills = [
 
 const About = () => {
   return (
-    <section id='about' className='relative w-full h-screen overflow-hidden flex flex-col bg-[#2A2621]'>
+    <section id='about' className='relative md:w-full md:h-screen overflow-hidden flex flex-col bg-[#2A2621]'>
       {/* Title */}
       <h1 className="text-4xl md:text-6xl font-[times] mb-0 md:mb-8 mt-8 md:mt-12 text-[#F5F5F5] z-20 text-center md:text-left ml-0 md:ml-18">
         About me
@@ -39,7 +39,7 @@ const About = () => {
         </div>
 
         {/* Description */}
-        <div className="text-xs md:text-lg -mb-2 leading-relaxed max-w-2xl w-full text-center md:text-left text-[#F5F5F5] flex flex-col justify-center md:justify-start mx-12 md:mx-0">
+        <div className="text-xs md:text-lg -mt-2 -mb-2 leading-relaxed max-w-2xl w-full text-center md:text-left text-[#F5F5F5] flex flex-col justify-center md:justify-start mx-12 md:mx-0">
           <p className='mx-8 md:mx-0'>
             Hi, I’m Lukas — a 23-year-old New Media Development student from Ghent, passionate about building creative digital solutions. I love working where design meets development, and I’m always eager to learn in this fast-moving industry.
           </p>
@@ -54,13 +54,13 @@ const About = () => {
 
       {/* Skills section */}
       <div className="mt-4 md:mt-12 px-4 md:px-18">
-        <h2 className="text-4xl md:text-6xl font-[times] -mb-2 md:mb-8 mt-8 md:mt-12 text-[#F5F5F5] z-20 text-center md:text-left ml-0 ">
+        <h2 className="text-4xl md:text-6xl font-[times]  md:mb-8 mt-8 md:mt-6 text-[#F5F5F5] z-20 text-center md:text-left ml-0 ">
           Skills
         </h2>
 
 
         {/* Skills section */}
-        <div className="mt-4 grid grid-cols-3 sm:grid-cols-3 md:grid-cols-5 gap-x-4 gap-y-6 justify-items-center">
+        <div className="mt-4 mb-4 grid grid-cols-3 sm:grid-cols-3 md:grid-cols-5 gap-x-4 gap-y-6 justify-items-center">
           {skills.map((skill, idx) => (
             <div
               key={skill.label}
